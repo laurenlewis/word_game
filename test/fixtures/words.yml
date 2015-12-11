@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  verbs_animate_transitive_3rdsing: MyString
+  noun_concrete_count_that_a_singular: MyString
+  noun_concrete_count_that_the_singular: MyString
+  noun_concrete_count_that_plural: MyString
+  noun_concrete_count_that_the_plural: MyString
+  noun_concrete_count_who_a_singular: MyString
+  noun_concrete_count_who_the_singular: MyString
+  noun_concrete_count_who_plural: MyString
+  noun_concrete_count_who_the_plural: MyString
+  noun_abstract: MyString
+  adjective_animate: MyString
+  adjective_inanimate: MyString
+
+two:
+  verbs_animate_transitive_3rdsing: MyString
+  noun_concrete_count_that_a_singular: MyString
+  noun_concrete_count_that_the_singular: MyString
+  noun_concrete_count_that_plural: MyString
+  noun_concrete_count_that_the_plural: MyString
+  noun_concrete_count_who_a_singular: MyString
+  noun_concrete_count_who_the_singular: MyString
+  noun_concrete_count_who_plural: MyString
+  noun_concrete_count_who_the_plural: MyString
+  noun_abstract: MyString
+  adjective_animate: MyString
+  adjective_inanimate: MyString

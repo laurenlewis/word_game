@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208223039) do
+ActiveRecord::Schema.define(version: 20151211031215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 20151208223039) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string   "verbs_animate_transitive_3rdsing"
+    t.string   "noun_concrete_count_that_a_singular"
+    t.string   "noun_concrete_count_that_the_singular"
+    t.string   "noun_concrete_count_that_plural"
+    t.string   "noun_concrete_count_that_the_plural"
+    t.string   "noun_concrete_count_who_a_singular"
+    t.string   "noun_concrete_count_who_the_singular"
+    t.string   "noun_concrete_count_who_plural"
+    t.string   "noun_concrete_count_who_the_plural"
+    t.string   "noun_abstract"
+    t.string   "adjective_animate"
+    t.string   "adjective_inanimate"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
 end
