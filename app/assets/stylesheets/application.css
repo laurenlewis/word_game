@@ -13,3 +13,157 @@
  *= require_tree .
  *= require_self
  */
+body {
+	background: #DAD299; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #DAD299 , #B0DAB9); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #DAD299 , #B0DAB9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.start {
+	color: #fff;
+	font-size: 100px;
+}
+
+.startbox {
+	font-family: 'Dancing Script', cursive; 
+	display: inline-block;
+	border: 2px solid #68B2A2;
+	border-radius: 3%;
+	padding: 10px;
+	width: 500px;
+	text-align: center;
+	box-shadow: 2px 2px #31655A;
+	background-color: #68B2A2;
+	position: absolute;
+	top: 30%;
+    left: 30%;
+}
+
+.sidebar {
+	position: relative;
+	float: right;
+	border: 2px solid #31655A;
+  	height: 100vh;
+  	width: 20vw;
+}
+
+.consolebox {
+	margin: 5px;
+	border: 2px solid #68B2A2;
+	position: relative;
+	overflow: auto;
+	height: 50px;
+	padding: 10px;
+}
+
+.player {
+	text-align: center;
+}
+
+.trafficlight {
+	width: 30px;
+	height: 30px;
+	border: solid 2px #31655A;
+	position: absolute;
+	float: left;
+	display: inline;
+	text-align: center;
+}
+
+.scorebox {
+	width: 30px;
+	height: 30px;
+	border: solid 2px #BB83BF;
+	/*position: relative;*/
+	float: right;
+	/*display: absolute;*/
+	text-align: center;
+}
+
+.container {
+	font-family: 'Gloria Hallelujah';
+	width: 100%;
+	max-width: 750px;
+	height: 100%;
+	max-height: 300px;
+	/*border: 3px solid #68B2A2;*/
+	/*float: left;*/
+	display: inline;
+	position: fixed;
+	left: 200px;
+	bottom: 300px;
+	font-size: 50px;
+	text-align: center;
+	padding: 10px;
+	margin: 30px;
+}
+
+.phrasebox {
+	font-family: 'Gloria Hallelujah';
+	padding: 20px;
+}
+
+.longbox {
+	font-family: 'Gloria Hallelujah';
+	font-size: 30px;
+	display: inline;
+	position: absolute;
+	width: 100%;
+	max-width: 1000px;
+	height: 100%;
+	max-height: 80px;
+	top: 0px;
+	left: 100px;
+	text-align: center;
+}
+
+.player_response {
+	margin: 50px 0px 0px 0px;
+	text-align: left;
+}
+
+.waiting {
+	font-family: 'Dancing Script', cursive; 
+	font-size: 100px;
+	position: absolute;
+	display: inline;
+	top: 30%;
+    left: 30%;
+}
+
+.pointbox {
+	border: 2px solid #BB83BF;
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin: 15px;
+	text-align: center;
+}
+.winningbox {
+	border: 4px solid #BB83BF;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.redirecting1 {
+	font-family: 'Gloria Hallelujah';
+	font-size: 100px;
+	position: absolute;
+	display: inline;
+	top: 10%;
+    left: 10%;
+    text-align: center;
+    width: 60%;
+}
+
+.redirecting2 {
+	font-family: 'Dancing Script', cursive; 
+	font-size: 80px;
+	position: absolute;
+	display: inline;
+	top: 40%;
+    left: 10%;
+    text-align: center;
+    width: 60%;
+}
