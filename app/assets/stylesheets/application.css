@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+	height: 100%;
+}
+
 body {
 	background: #DAD299; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to left, #DAD299 , #B0DAB9); /* Chrome 10-25, Safari 5.1-6 */
@@ -35,8 +40,10 @@ body {
 	box-shadow: 2px 2px #31655A;
 	background-color: #68B2A2;
 	position: absolute;
-	top: 30%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -70px;
 }
 
 .sidebar {
@@ -83,19 +90,19 @@ body {
 .container {
 	font-family: 'Gloria Hallelujah';
 	width: 100%;
-	max-width: 750px;
+	/*max-width: 750px;*/
 	height: 100%;
-	max-height: 300px;
+	/*max-height: 300px;*/
 	/*border: 3px solid #68B2A2;*/
 	/*float: left;*/
 	display: inline;
 	position: fixed;
-	left: 200px;
-	bottom: 300px;
+	/*left: 200px;*/
+	/*bottom: 300px;*/
 	font-size: 50px;
 	text-align: center;
 	padding: 10px;
-	margin: 30px;
+	margin: 30px auto;
 }
 
 
@@ -103,6 +110,12 @@ body {
 .phrasebox {
 	font-family: 'Gloria Hallelujah';
 	padding: 20px;
+}
+
+.phrase_wrapper {
+	width: 800px;
+	margin: 0 auto;
+	padding-top: 30px;
 }
 
 .phrase_container {

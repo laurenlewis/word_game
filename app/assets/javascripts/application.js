@@ -14,6 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require websocket_rails/main
+
+var dispatcher = new WebSocketRails('localhost:3000/websocket');
+var channel = dispatcher.subscribe('updates'); 
+
+dispatcher.on_open = function(data) {  
+  console.log('Connection has been established: ', data);
+  dispatcher.trigger('hello', 'Hello, there!');
+}
+
+channel.bind('update', function(msg) {  
+  console.log(msg);
+});
 
 $(document).ready(function() {
 	$(".start_container").on("click", function() {
@@ -23,3 +36,4 @@ $(document).ready(function() {
 
 	});
 });
+
