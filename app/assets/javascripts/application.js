@@ -24,16 +24,28 @@ dispatcher.on_open = function(data) {
   dispatcher.trigger('hello', 'Hello, there!');
 }
 
+// 'update' Event from the Server
 channel.bind('update', function(msg) {  
   console.log(msg);
 });
 
+// 'new_round' Event from the Server
+channel.bind('new_round', function(phrase) {
+  // Replace .phrasebox inner html with the phrase
+  $(".phrasebox").html(phrase);  
+
+  // Show the phrase container and hide the start button
+  $(".phrase_container").show();
+  $(".start_container").hide();
+});
+
 $(document).ready(function() {
 	$(".start_container").on("click", function() {
-		console.log("hello");
-		 $(".phrase_container").show();
-		 $(".start_container").hide();
-
+		dispatcher.trigger('start_round', 'Start round.');
 	});
+
+  $(".phrase_wrapper .btn").on("click", function() {
+    dispatcher.trigger('start_round', 'Start round.');
+  });
 });
 
