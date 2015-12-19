@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+	$(".start_container").on("click", function() {
+		console.log("hello");
+		 $(".phrase_container").show();
+		 $(".start_container").hide();
+
+	});
+});

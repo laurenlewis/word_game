@@ -98,9 +98,15 @@ body {
 	margin: 30px;
 }
 
+
+/*  Home Page - Phrase Box  */
 .phrasebox {
 	font-family: 'Gloria Hallelujah';
 	padding: 20px;
+}
+
+.phrase_container {
+	display: none;
 }
 
 .longbox {
