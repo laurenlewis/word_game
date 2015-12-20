@@ -54,6 +54,7 @@ channel.bind('add_phrase', function(data) {
 // 'display_submissions' Event from the Server
 channel.bind('display_submissions', function(msg) {  
   console.log("Display Submissions!");
+  $(".phrase_container").html(roundSubmissions.object);
 });
 
 $(document).ready(function() {
@@ -75,7 +76,9 @@ $(document).ready(function() {
     // Change html of phrase container
     $(".phrase_container").html('Waiting on other players...');
 
-    // $(".phrase_container").html(roundSubmissions);
+    // Once all submissions have been received, display them on the page
+
+   
   });
 });
 

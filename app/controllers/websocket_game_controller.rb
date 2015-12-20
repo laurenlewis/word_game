@@ -25,8 +25,9 @@ class WebsocketGameController < WebsocketRails::BaseController
   private
   def get_random_phrase
   	phrases = [
-  	  'There\'s an old phrase from Denmark. "She who punches cats..."', 
-  	  'There\'s an old phrase from Italy. "He who punches ferrets..."', 
+  	  'There\'s an old saying from Denmark. "She who offers an apple..."', 
+  	  'There\'s an old saying from Italy. "He who punches cats..."', 
+  	  'There\'s an old saying from Mozambique. "She who hopes for pumpkins..."'
   	]
   	phrases.sample
   end
