@@ -54,7 +54,22 @@ channel.bind('add_phrase', function(data) {
 // 'display_submissions' Event from the Server
 channel.bind('display_submissions', function(msg) {  
   console.log("Display Submissions!");
-  $(".phrase_container").html(roundSubmissions.object);
+  $(".phrase_container").html(""); 
+  $(".phrase_container").css('font-size', '30px');
+  $(".phrase_container").append(roundPhrase + '<br/>' + '<br/>');
+  for(var i = 0; i < roundSubmissions.length; i++) {
+    $(".phrase_container").append(roundSubmissions[i].phraseEnding + '<br/>' + '<br/>');
+  };
+
+// $(".phrase_container").html(roundSubmissions[0].phraseEnding);
+
+  // $(roundSubmissions).each(function(object[1]) {
+  //   $(".phrase_container").html(object[1]);
+  // });
+  // $.each(roundSubmissions[0], function(value) {
+  //   $(".phrase_container").html(value);
+  // });
+
 });
 
 $(document).ready(function() {
@@ -75,9 +90,6 @@ $(document).ready(function() {
 
     // Change html of phrase container
     $(".phrase_container").html('Waiting on other players...');
-
-    // Once all submissions have been received, display them on the page
-
    
   });
 });

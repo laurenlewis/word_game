@@ -27,7 +27,7 @@ class WebsocketGameController < WebsocketRails::BaseController
   	phrases = [
   	  'There\'s an old saying from Denmark. "She who offers an apple..."', 
   	  'There\'s an old saying from Italy. "He who punches cats..."', 
-  	  'There\'s an old saying from Mozambique. "She who hopes for pumpkins..."'
+  	  'There\'s an old saying from Mozambique. "She who hopes for the pumpkins..."'
   	]
   	phrases.sample
   end
