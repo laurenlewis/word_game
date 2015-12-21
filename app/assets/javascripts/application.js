@@ -58,6 +58,8 @@ channel.bind('display_submissions', function(msg) {
   $(".phrase_container").css('font-size', '30px');
   $(".phrase_container").append(roundPhrase + '<br/>' + '<br/>');
   for(var i = 0; i < roundSubmissions.length; i++) {
+    $(".phrase_container").append("<button>Vote</button>" + '   ');
+    $("button").addClass("btn btn-default");
     $(".phrase_container").append(roundSubmissions[i].phraseEnding + '<br/>' + '<br/>');
   };
 
