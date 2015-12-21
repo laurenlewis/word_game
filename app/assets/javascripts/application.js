@@ -92,6 +92,8 @@ $(document).ready(function() {
 
     // Change html of phrase container
     $(".phrase_container").html('Waiting on other players...');
+
+    dispatcher.trigger('submit_votes', message)
    
   });
 });

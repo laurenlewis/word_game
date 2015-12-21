@@ -22,6 +22,10 @@ class WebsocketGameController < WebsocketRails::BaseController
   	end
   end
 
+  def handle_vote_submission
+  	
+  end
+
   private
   def get_random_phrase
   	phrases = [
