@@ -23,7 +23,7 @@ var roundPhrase = "";
 
 dispatcher.on_open = function(data) {  
   console.log('Connection has been established: ', data);
-  dispatcher.trigger('hello', 'Hello, there!');
+  dispatcher.trigger('hello', 'Hello, there from: '+data.connection_id);
 }
 
 $(document).ready(function() {
@@ -61,6 +61,12 @@ $(document).ready(function() {
     // Send message about votes to server
     dispatcher.trigger('submit_vote', voteForId);
   });
+
+  // --- Next Round Button Click Event ---
+  $$(".phrase_container").on("click", ".next_round", function() {
+    dispatcher.trigger('start_round', 'Start round.');
+  });
+
 });
 
 /**************************************
@@ -111,6 +117,19 @@ channel.bind('display_submissions', function(msg) {
 channel.bind('update_vote_counts', function(voteCounts) {
   for (key in voteCounts) {
     $('#counter-'+key).html(voteCounts[key]);
+    // $('#user-'+key+' .scorebox').html(????) // where ???? should be current score + this new score
   }
 });
 
+
+window.onbeforeunload = function (e) {
+  var message = "Please don't go!",
+  e = e || window.event;
+  // For IE and Firefox
+  if (e) {
+    e.returnValue = message;
+  }
+
+  // For Safari
+  return message;
+};
