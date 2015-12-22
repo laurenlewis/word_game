@@ -26,12 +26,54 @@ dispatcher.on_open = function(data) {
   dispatcher.trigger('hello', 'Hello, there!');
 }
 
-// 'update' Event from the Server
+$(document).ready(function() {
+  // --- Start Button Click Event ---
+	$(".start_container").on("click", function() {
+		dispatcher.trigger('start_round', 'Start round.');
+	});
+
+  // --- Phrase Submission Click Event ---
+  $(".phrase_wrapper .btn").on("click", function(e) {
+    e.preventDefault();
+    var phraseEnding = $('#phrase_ending').val();
+    var message = {
+      'id': channel.connection_id,
+      'phraseEnding': phraseEnding
+    };
+
+    // Send message and id to server
+    dispatcher.trigger('submit_phrase_ending', message);
+
+    // Change html of phrase container
+    $(".phrase_container").html('Waiting on other players...');
+  });
+
+  // --- Vote Submission/Click Event ----
+  $(".phrase_container").on("click", ".vote_btn", function(){
+    var voteForId = $(this).val();
+
+    // Hide Vote Buttons
+    $('.vote_btn').hide();
+
+    // Show Vote Counts
+    $('.counter').show();
+
+    // Send message about votes to server
+    dispatcher.trigger('submit_vote', voteForId);
+  });
+});
+
+/**************************************
+ * Below are all of our functions for 
+ * handling messages from the server
+ *************************************/
+
+// - Handle 'update' Event from the Server
 channel.bind('update', function(msg) {  
   console.log(msg);
 });
 
-// 'new_round' Event from the Server
+// - Handle 'new_round' Event from the Server
 channel.bind('new_round', function(phrase) {
   // Reset submissions for the new round
   roundSubmissions = [];
@@ -46,55 +88,29 @@ channel.bind('new_round', function(phrase) {
   $(".start_container").hide();
 });
 
-// 'add_phrase' Event from the Server
+// - Handle 'add_phrase' Event from the Server
 channel.bind('add_phrase', function(data) {  
   roundSubmissions.push(data);
 });
 
-// 'display_submissions' Event from the Server
+// - Handle 'display_submissions' Event from the Server
 channel.bind('display_submissions', function(msg) {  
   console.log("Display Submissions!");
   $(".phrase_container").html(""); 
   $(".phrase_container").css('font-size', '30px');
   $(".phrase_container").append(roundPhrase + '<br/>' + '<br/>');
-  for(var i = 0; i < roundSubmissions.length; i++) {
-    $(".phrase_container").append("<button>Vote</button>" + '   ');
-    $("button").addClass("btn btn-default");
-    $(".phrase_container").append(roundSubmissions[i].phraseEnding + '<br/>' + '<br/>');
-  };
-
-// $(".phrase_container").html(roundSubmissions[0].phraseEnding);
-
-  // $(roundSubmissions).each(function(object[1]) {
-  //   $(".phrase_container").html(object[1]);
-  // });
-  // $.each(roundSubmissions[0], function(value) {
-  //   $(".phrase_container").html(value);
-  // });
-
+    for(var i = 0; i < roundSubmissions.length; i++) {
+      $(".phrase_container").append("<span id='counter-"+roundSubmissions[i].id+"' class='counter'>0</span>");
+      $(".phrase_container").append("<button value='"+roundSubmissions[i].id+"'>Vote</button>" + '   ');
+      $("button").addClass("btn btn-default vote_btn");
+      $(".phrase_container").append(roundSubmissions[i].phraseEnding + '<br/>' + '<br/>');
+    };
 });
 
-$(document).ready(function() {
-	$(".start_container").on("click", function() {
-		dispatcher.trigger('start_round', 'Start round.');
-	});
-
-  $(".phrase_wrapper .btn").on("click", function(e) {
-    e.preventDefault();
-    var phraseEnding = $('#phrase_ending').val();
-    var message = {
-      'id': channel.connection_id,
-      'phraseEnding': phraseEnding
-    };
-
-    // Send message and id to server
-    dispatcher.trigger('submit_phrase_ending', message);
-
-    // Change html of phrase container
-    $(".phrase_container").html('Waiting on other players...');
-
-    dispatcher.trigger('submit_votes', message)
-   
-  });
+// - Handle 'update_vote_counts' Event from the Server
+channel.bind('update_vote_counts', function(voteCounts) {
+  for (key in voteCounts) {
+    $('#counter-'+key).html(voteCounts[key]);
+  }
 });
 

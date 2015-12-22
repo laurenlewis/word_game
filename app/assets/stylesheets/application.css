@@ -187,3 +187,10 @@ body {
     text-align: center;
     width: 60%;
 }
+
+.counter {
+	display: none;
+	background-color: #000;
+	color: #fff;
+    padding: 0 10px;
+}
