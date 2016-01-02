@@ -35,6 +35,8 @@ class WebsocketGameController < WebsocketRails::BaseController
   	else
   	  controller_store[:vote_counts][message] = 1
   	end
+
+  	controller_store[:total_votes] = 0
   	
   	# Send update_vote_counts event with the vote_count hash
   	WebsocketRails[:updates].trigger(:update_vote_counts, controller_store[:vote_counts])
