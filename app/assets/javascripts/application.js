@@ -45,7 +45,8 @@ $(document).ready(function() {
     dispatcher.trigger('submit_phrase_ending', message);
 
     // Change html of phrase container
-    $(".phrase_container").html('Waiting on other players...');
+    $(".dynamic_content").html('Waiting on other players...');
+    $(".phrase_wrapper").hide();
   });
 
   // --- Vote Submission/Click Event ----
@@ -89,6 +90,11 @@ channel.bind('new_round', function(phrase) {
   $(".phrasebox").html(phrase);
   roundPhrase = phrase;
 
+  //Clear ".dynamic_content"
+  $(".dynamic_content").html(""); 
+  $("#phrase_ending").val("");
+  $(".phrase_wrapper").show();
+
   // Show the phrase container and hide the start button
   $(".phrase_container").show();
   $(".start_container").hide();
@@ -102,14 +108,14 @@ channel.bind('add_phrase', function(data) {
 // - Handle 'display_submissions' Event from the Server
 channel.bind('display_submissions', function(msg) {  
   console.log("Display Submissions!");
-  $(".phrase_container").html(""); 
-  $(".phrase_container").css('font-size', '30px');
-  $(".phrase_container").append(roundPhrase + '<br/>' + '<br/>');
+  $(".dynamic_content").html(""); 
+  $(".dynamic_content").css('font-size', '30px');
+  $(".dynamic_content").append(roundPhrase + '<br/>' + '<br/>');
     for(var i = 0; i < roundSubmissions.length; i++) {
-      $(".phrase_container").append("<span id='counter-"+roundSubmissions[i].id+"' class='counter'>0</span>");
-      $(".phrase_container").append("<button value='"+roundSubmissions[i].id+"'>Vote</button>" + '   ');
-      $("button").addClass("btn btn-default vote_btn");
-      $(".phrase_container").append(roundSubmissions[i].phraseEnding + '<br/>' + '<br/>');
+      $(".dynamic_content").append("<span id='counter-"+roundSubmissions[i].id+"' class='counter'>0</span>");
+      $(".dynamic_content").append("<button value='"+roundSubmissions[i].id+"'>Vote</button>" + '   ');
+      $(".dynamic_content button").addClass("btn btn-default vote_btn");
+      $(".dynamic_content").append(roundSubmissions[i].phraseEnding + '<br/>' + '<br/>');
     };
 });
 
@@ -123,8 +129,11 @@ channel.bind('update_vote_counts', function(voteCounts) {
 
 channel.bind('compare_vote_counts', function(voteSaves) {
   console.log("Display Next Round Button");
-  $(".phrase_container").append("<span class='btn btn-primary nextround'>Next Round</span>");
+  $(".dynamic_content").append("<a class='btn btn-primary next_round disabled' href='#'>Next Round</a>");
   // $(".nextround").css('')
+  setTimeout(function(){
+    $(".next_round").removeClass("disabled");
+  }, 5000);
 });
 
 
