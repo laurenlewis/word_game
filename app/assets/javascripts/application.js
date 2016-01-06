@@ -63,7 +63,7 @@ $(document).ready(function() {
   });
 
   // --- Next Round Button Click Event ---
-  $$(".phrase_container").on("click", ".next_round", function() {
+  $(".phrase_container").on("click", ".next_round", function() {
     dispatcher.trigger('start_round', 'Start round.');
   });
 
@@ -119,6 +119,12 @@ channel.bind('update_vote_counts', function(voteCounts) {
     $('#counter-'+key).html(voteCounts[key]);
     // $('#user-'+key+' .scorebox').html(????) // where ???? should be current score + this new score
   }
+});
+
+channel.bind('compare_vote_counts', function(voteSaves) {
+  console.log("Display Next Round Button");
+  $(".phrase_container").append("<span class='btn btn-primary nextround'>Next Round</span>");
+  // $(".nextround").css('')
 });
 
 

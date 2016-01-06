@@ -7,6 +7,7 @@ class WebsocketGameController < WebsocketRails::BaseController
   # Start New Round - provide phrase to users
   def start_new_round
   	controller_store[:submission_count] = 0
+  	controller_store[:total_votes_for_round] = 0
   	controller_store[:vote_counts] = {}
   	WebsocketRails[:updates].trigger(:new_round, get_random_phrase)
   end
@@ -36,10 +37,17 @@ class WebsocketGameController < WebsocketRails::BaseController
   	  controller_store[:vote_counts][message] = 1
   	end
 
-  	controller_store[:total_votes] = 0
-  	
   	# Send update_vote_counts event with the vote_count hash
   	WebsocketRails[:updates].trigger(:update_vote_counts, controller_store[:vote_counts])
+
+    # Get list of connections to the 'updates' channel
+    connections = WebsocketRails[:updates].subscribers
+
+  	# Update the count of the votes for this round
+  	controller_store[:total_votes_for_round] += 1
+  	if (connections.length == controller_store[:total_votes_for_round])
+  	  WebsocketRails[:updates].trigger(:compare_vote_counts, controller_store[:total_votes_for_round])
+  	end
   end
 
   private
