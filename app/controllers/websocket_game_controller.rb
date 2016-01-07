@@ -53,16 +53,16 @@ class WebsocketGameController < WebsocketRails::BaseController
   private
   def get_random_phrase
   	phrases = [
-  	  'There\'s an ancient saying from Denmark. "She who offers an apple..."', 
-  	  'There\'s an ancient saying from Italy. "He who punches cats..."', 
-  	  'There\'s an ancient saying from Mozambique. "She who hopes for the pumpkins..."',
-      'There\'s an ancient saying from China. "He who follows pebbles..."',
-      'There\'s an ancient saying from Columbia. "She who ignores her shadow..."',
-      'There\'s an old saying from Taiwan. "He who chases death..."',
-      'There\'s an old saying from Egypt. "She who abandons ignorance..."',
-      'There\'s an old saying from Russia. "He who steps on love..."',
-      'There\'s an old saying from Cuba. "She who squints at the bees..."',
-      'There\'s an old saying from Mexico. "He who drinks with a snake..."'
+  	  'My sagely old uncle used to say: "She who offers an apple..."', 
+  	  'My sagely old aunt used to say: "He who fears clocks..."', 
+  	  'My sagely old neighbor used to say: "She who hopes for the pumpkins..."',
+      'My sagely old grandma used to say: "He who follows pebbles..."',
+      'My sagely old grandpa used to say: "She who ignores her shadow..."',
+      'My sagely old professor used to say: "He who chases death..."',
+      'My sagely old mailman used to say: "She who abandons ignorance..."',
+      'My sagely old librarian used to say: "He who steps on love..."',
+      'My sagely old cat used to say: "She who squints at the bees..."',
+      'My sagely old uncle used to say: "He who drinks with a snake..."'
 
   	]
   	phrases.sample
