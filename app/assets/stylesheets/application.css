@@ -51,8 +51,8 @@ body {
 	position: relative;
 	float: right;
 	border: 2px solid #31655A;
-  	height: 100vh;
-  	width: 20vw;
+	width: 25%;
+	height: 100%;
 }
 
 .consolebox {
@@ -67,16 +67,6 @@ body {
 .player {
 	text-align: center;
 }
-
-/*.trafficlight {
-	width: 30px;
-	height: 30px;
-	border: solid 2px #31655A;
-	position: absolute;
-	float: left;
-	display: inline;
-	text-align: center;
-}*/
 
 .scorebox {
 	width: 30px;
@@ -107,20 +97,26 @@ body {
 }
 
 
-/*  Home Page - Phrase Box  */
+/*****  Home Page - Phrase Box *****/
 .phrasebox {
 	font-family: 'Gloria Hallelujah';
 	padding: 20px;
 }
 
 .phrase_wrapper {
-	width: 800px;
+	width: 75%;
 	margin: 0 auto;
 	padding-top: 30px;
 }
 
 .phrase_container {
 	display: none;
+}
+
+#phrase_ending {
+	width: 75%;
+	margin: 0 auto;
+	float: none;
 }
 
 .longbox {

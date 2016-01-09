@@ -24,6 +24,7 @@ var roundPhrase = "";
 dispatcher.on_open = function(data) {  
   console.log('Connection has been established: ', data);
   dispatcher.trigger('hello', 'Hello, there from: '+data.connection_id);
+  dispatcher.trigger('new_player', 'Hello player '+data.connection_id);
 }
 
 $(document).ready(function() {
@@ -136,6 +137,8 @@ channel.bind('compare_vote_counts', function(voteSaves) {
   }, 5000);
 });
 
+channel.bind('compare_vote_counts', function(voteSaves) {
+});
 
 window.onbeforeunload = function (e) {
   var message = "Please don't go!",

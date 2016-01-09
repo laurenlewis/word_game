@@ -50,6 +50,10 @@ class WebsocketGameController < WebsocketRails::BaseController
   	end
   end
 
+  def handle_new_player
+    
+  end
+
   private
   def get_random_phrase
   	phrases = [
