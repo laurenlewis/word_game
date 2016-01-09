@@ -143,10 +143,19 @@ channel.bind('announce_new_player', function(players) {
   for(var i = 0; i < players.length; i++) {
     if (currentPlayers.indexOf(players[i]) < 0) {
       currentPlayers.push(players[i]);
-      $(".sidebar").append("<div class='consolebox'><div class='scorebox'></div><p class='player'>"+players[i]+"</p></div>");
+      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'></div><p class='player'>"+players[i]+"</p></div>");
     }
   }
 });
+
+channel.bind('announce_player_exit', function(players) {
+  for(var i = 0; i < currentPlayers.length; i++) {
+    if (players.indexOf(currentPlayers[i]) < 0) {
+      $("#consolebox-"+currentPlayers[i]).remove();
+      currentPlayers.splice(i, 1);
+    }
+  }
+}); 
 
 window.onbeforeunload = function (e) {
   var message = "Please don't go!",

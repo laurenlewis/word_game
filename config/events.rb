@@ -17,4 +17,6 @@ WebsocketRails::EventMap.describe do
   subscribe :submit_phrase_ending, :to => WebsocketGameController, :with_method => :handle_phrase_submission
   subscribe :submit_vote, :to => WebsocketGameController, :with_method => :handle_vote_submission
   subscribe :new_player, :to => WebsocketGameController, :with_method => :handle_new_player
+  subscribe :client_disconnected, :to => WebsocketGameController, :with_method => :handle_player_exit
+  subscribe :connection_closed, :to => WebsocketGameController, :with_method => :handle_player_exit
 end

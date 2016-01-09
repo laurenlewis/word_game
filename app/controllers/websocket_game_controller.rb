@@ -59,6 +59,16 @@ class WebsocketGameController < WebsocketRails::BaseController
     WebsocketRails[:updates].trigger(:announce_new_player, players)
   end
 
+  def handle_player_exit
+
+    connections = WebsocketRails[:updates].subscribers
+    players = []
+    for i in 0...connections.length
+      players.push(connections[i].id)
+    end
+    WebsocketRails[:updates].trigger(:announce_player_exit, players)
+  end
+
   private
   def get_random_phrase
   	phrases = [
@@ -70,7 +80,7 @@ class WebsocketGameController < WebsocketRails::BaseController
       'My sagely old professor used to say: "He who chases death..."',
       'My sagely old mailman used to say: "She who abandons ignorance..."',
       'My sagely old librarian used to say: "He who steps on love..."',
-      'My sagely old cat used to say: "She who squints at the bees..."',
+      'My sagely old cat used to say: "She who squints at the mice..."',
       'My sagely old uncle used to say: "He who drinks with a snake..."'
 
   	]
