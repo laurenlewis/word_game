@@ -59,7 +59,7 @@ body {
 	margin: 5px;
 	border: 2px solid #68B2A2;
 	position: relative;
-	overflow: auto;
+/*	overflow: auto;*/
 	height: 50px;
 	padding: 10px;
 }
@@ -68,7 +68,7 @@ body {
 	text-align: center;
 }
 
-.trafficlight {
+/*.trafficlight {
 	width: 30px;
 	height: 30px;
 	border: solid 2px #31655A;
@@ -76,7 +76,7 @@ body {
 	float: left;
 	display: inline;
 	text-align: center;
-}
+}*/
 
 .scorebox {
 	width: 30px;
@@ -190,7 +190,10 @@ body {
 
 .counter {
 	display: none;
-	background-color: #000;
-	color: #fff;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+	color: #BB83BF;
     padding: 0 10px;
+    border-radius: 50%;
+
 }

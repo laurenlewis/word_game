@@ -129,7 +129,7 @@ channel.bind('update_vote_counts', function(voteCounts) {
 
 channel.bind('compare_vote_counts', function(voteSaves) {
   console.log("Display Next Round Button");
-  $(".dynamic_content").append("<a class='btn btn-primary next_round disabled' href='#'>Next Round</a>");
+  $(".dynamic_content").append("<a class='btn btn-default next_round disabled' href='#'>Next Round</a>");
   // $(".nextround").css('')
   setTimeout(function(){
     $(".next_round").removeClass("disabled");
