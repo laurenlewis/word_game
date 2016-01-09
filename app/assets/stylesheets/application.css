@@ -33,9 +33,12 @@ body {
 	font-size: 100px;
 }
 
+#wrapper {
+	height: 100%;
+}
+
 .startbox {
 	font-family: 'Dancing Script', cursive; 
-	display: inline-block;
 	border: 2px solid #68B2A2;
 	border-radius: 3%;
 	padding: 10px;
@@ -43,12 +46,10 @@ body {
 	text-align: center;
 	box-shadow: 2px 2px #31655A;
 	background-color: #68B2A2;
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -250px;
-    margin-top: -70px;
     cursor: pointer;
+    clear: both;
+    margin-left: 25%;
+    margin-top: 30%;
 }
 
 .sidebar {
@@ -57,6 +58,10 @@ body {
 	border: 2px solid #31655A;
 	width: 25%;
 	height: 100%;
+}
+
+.sidebar h4 {
+	margin-left: 10px;
 }
 
 .consolebox {
@@ -83,7 +88,7 @@ body {
 
 .container {
 	font-family: 'Gloria Hallelujah';
-	width: 100%;
+	width: 75% !important;
 	/*max-width: 750px;*/
 	height: 100%;
 	/*max-height: 300px;*/
@@ -97,6 +102,7 @@ body {
 	text-align: center;
 	padding: 10px;
 	margin: 30px auto;
+	margin-top: 0;
 }
 
 
@@ -104,6 +110,7 @@ body {
 .phrasebox {
 	font-family: 'Gloria Hallelujah';
 	padding: 20px;
+	line-height: 1.5em;
 }
 
 .phrase_wrapper {

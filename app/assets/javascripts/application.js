@@ -138,16 +138,20 @@ channel.bind('compare_vote_counts', function(voteSaves) {
   }, 5000);
 });
 
+/*Got var players from handle_new_player method, at the top defined empty array currentPlayers.
+Looping through, we're looking through currentPlayers(indexing) to see if players[i] is there. 
+If not, the index value is -1, & it will add players[i] to the currentPlayers array, and then add a new div for that player.*/
 channel.bind('announce_new_player', function(players) {
   console.log("Announced new player");
   for(var i = 0; i < players.length; i++) {
     if (currentPlayers.indexOf(players[i]) < 0) {
       currentPlayers.push(players[i]);
-      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'></div><p class='player'>"+players[i]+"</p></div>");
+      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'></div><p class='player'>"+"Player_"+players[i].substring(0, 4)+"</p></div>");
     }
   }
 });
-
+/*Similiar to above, just swapping players & currentPlayers since now players is a variable that contains the remaining players, 
+whereas currentPlayers still contains the extra id(s) of the player who left. */
 channel.bind('announce_player_exit', function(players) {
   for(var i = 0; i < currentPlayers.length; i++) {
     if (players.indexOf(currentPlayers[i]) < 0) {
