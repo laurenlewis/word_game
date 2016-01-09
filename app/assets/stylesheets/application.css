@@ -24,6 +24,10 @@ body {
 	background: linear-gradient(to left, #DAD299 , #B0DAB9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.navbar-brand {
+	font-family: 'Dancing Script', cursive; 
+}
+
 .start {
 	color: #fff;
 	font-size: 100px;
@@ -35,7 +39,7 @@ body {
 	border: 2px solid #68B2A2;
 	border-radius: 3%;
 	padding: 10px;
-	width: 500px;
+	width: 50%;
 	text-align: center;
 	box-shadow: 2px 2px #31655A;
 	background-color: #68B2A2;
