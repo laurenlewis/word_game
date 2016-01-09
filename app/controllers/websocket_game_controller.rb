@@ -51,7 +51,12 @@ class WebsocketGameController < WebsocketRails::BaseController
   end
 
   def handle_new_player
-    
+    connections = WebsocketRails[:updates].subscribers
+    players = []
+    for i in 0...connections.length
+      players.push(connections[i].id)
+    end
+    WebsocketRails[:updates].trigger(:announce_new_player, players)
   end
 
   private
