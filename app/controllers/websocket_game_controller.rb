@@ -6,6 +6,14 @@ class WebsocketGameController < WebsocketRails::BaseController
 
   # Start New Round - provide phrase to users
   def start_new_round
+    # Update Round Number
+    if controller_store.has_key?(:round_number)
+      controller_store[:round_number] = controller_store[:round_number] + 1
+    else
+      controller_store[:round_number] = 0
+    end
+
+    # Reset Round Variables
   	controller_store[:submission_count] = 0
   	controller_store[:total_votes_for_round] = 0
   	controller_store[:vote_counts] = {}
@@ -82,8 +90,7 @@ class WebsocketGameController < WebsocketRails::BaseController
       'My sagely old librarian used to say: "He who steps on love..."',
       'My sagely old cat used to say: "She who squints at the mice..."',
       'My sagely old uncle used to say: "He who drinks with a snake..."'
-
   	]
-  	phrases.sample
+  	phrases[controller_store[:round_number]] 
   end
 end 
