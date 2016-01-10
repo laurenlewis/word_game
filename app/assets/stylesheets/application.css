@@ -64,6 +64,10 @@ body {
 	margin-left: 10px;
 }
 
+.phrase_wrapper, .dynamic_content {
+	clear: both;
+}
+
 .consolebox {
 	margin: 5px;
 	border: 2px solid #68B2A2;
@@ -84,6 +88,8 @@ body {
 	float: right;
 	/*display: absolute;*/
 	text-align: center;
+    margin-top: -4px;
+    padding-top: 2px;
 }
 
 .container {
@@ -202,4 +208,22 @@ body {
     padding: 0 10px;
     border-radius: 50%;
 
+}
+
+.winner {
+    font-weight: bold;
+    background-color: #BB83BF;
+    color: #e6e6e6;
+    line-height: 2.2em;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.winnerbox {
+    background-color: #BB83BF;
+    color: #fff;
+}
+
+.winnerbox .scorebox {
+    border-color: #68B2A2;
 }

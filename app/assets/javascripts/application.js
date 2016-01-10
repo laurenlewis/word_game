@@ -16,16 +16,20 @@
 //= require_tree .
 //= require websocket_rails/main
 
+var scoreNeededToWin = 4;
 var dispatcher = new WebSocketRails('localhost:3000/websocket');
 var channel = dispatcher.subscribe('updates'); 
 var roundSubmissions = [];
 var roundPhrase = "";
+var roundVotes = {};
 var currentPlayers = [];
+
 
 dispatcher.on_open = function(data) {  
   console.log('Connection has been established: ', data);
   dispatcher.trigger('hello', 'Hello, there from: '+data.connection_id);
   dispatcher.trigger('new_player', 'Hello player '+data.connection_id);
+  $("#unique_id").append(data.connection_id.substring(0, 4));
 }
 
 $(document).ready(function() {
@@ -87,6 +91,7 @@ channel.bind('new_round', function(phrase) {
   // Reset submissions for the new round
   roundSubmissions = [];
   roundPhrase = "";
+  roundVotes = {};
 
   // Replace .phrasebox inner html with the phrase
   $(".phrasebox").html(phrase);
@@ -125,17 +130,47 @@ channel.bind('display_submissions', function(msg) {
 channel.bind('update_vote_counts', function(voteCounts) {
   for (key in voteCounts) {
     $('#counter-'+key).html(voteCounts[key]);
-    // $('#user-'+key+' .scorebox').html(????) // where ???? should be current score + this new score
   }
+  roundVotes = voteCounts;
 });
 
 channel.bind('compare_vote_counts', function(voteSaves) {
-  console.log("Display Next Round Button");
-  $(".dynamic_content").append("<a class='btn btn-default next_round disabled' href='#'>Next Round</a>");
-  // $(".nextround").css('')
-  setTimeout(function(){
-    $(".next_round").removeClass("disabled");
-  }, 5000);
+
+
+  // Initialize possible Winners
+  var possibleWinner = null;
+  var possibleWinnerScore = 0;
+  var roundIsTied = false;
+
+  for (key in roundVotes) {
+    // Update the scorebox divs to reflect new total scores
+    var currentScore = $('#consolebox-'+key+' .scorebox').html();
+    var newScoreTotal = parseInt(currentScore) + roundVotes[key]; // current score + this new score
+    $('#consolebox-'+key+' .scorebox').html(newScoreTotal);
+
+    // Check to see if this is a possible winner
+    if (newScoreTotal >= scoreNeededToWin && newScoreTotal > possibleWinnerScore) {
+      possibleWinner = key;
+      possibleWinnerScore = newScoreTotal;
+      roundIsTied = false;
+    } else if (newScoreTotal >= scoreNeededToWin && newScoreTotal == possibleWinnerScore) {
+      roundIsTied = true;
+    }
+  }
+
+  // Start Over OR Next Round - if no winner OR if tie
+  if (possibleWinner !== null && roundIsTied === false) {
+    // Show Congrats to Player_xxxx and Add .winnerbox to their consolebox
+    $('#consolebox-'+possibleWinner).addClass("winnerbox");
+    $(".dynamic_content").append("<div class='winner'>Congrats to Player_"+possibleWinner.substring(0,4)+"!</div>");
+  } else {
+    console.log("Display Next Round Button");
+    $(".dynamic_content").append("<a class='btn btn-default next_round disabled' href='#'>Next Round</a>");
+    // $(".nextround").css('')
+    setTimeout(function(){
+      $(".next_round").removeClass("disabled");
+    }, 5000);
+  }
 });
 
 /*Got var players from handle_new_player method, at the top defined empty array currentPlayers.
@@ -146,7 +181,7 @@ channel.bind('announce_new_player', function(players) {
   for(var i = 0; i < players.length; i++) {
     if (currentPlayers.indexOf(players[i]) < 0) {
       currentPlayers.push(players[i]);
-      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'></div><p class='player'>"+"Player_"+players[i].substring(0, 4)+"</p></div>");
+      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'>0</div><p class='player'>"+"Player_"+players[i].substring(0, 4)+"</p></div>");
     }
   }
 });
