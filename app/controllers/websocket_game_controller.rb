@@ -91,6 +91,7 @@ class WebsocketGameController < WebsocketRails::BaseController
       'My sagely old cat used to say: "She who squints at the mice..."',
       'My sagely old uncle used to say: "He who drinks with a snake..."'
   	]
-  	phrases[controller_store[:round_number]] 
+  	# phrases[controller_store[:round_number]] 
+    phrases.sample
   end
 end 

@@ -162,7 +162,7 @@ channel.bind('compare_vote_counts', function(voteSaves) {
   if (possibleWinner !== null && roundIsTied === false) {
     // Show Congrats to Player_xxxx and Add .winnerbox to their consolebox
     $('#consolebox-'+possibleWinner).addClass("winnerbox");
-    $(".dynamic_content").append("<div class='winner'>Congrats to Player_"+possibleWinner.substring(0,4)+"!</div>");
+    $(".dynamic_content").append("<div class='winner'>Congrats to Guest_"+possibleWinner.substring(0,4)+"!</div>");
   } else {
     console.log("Display Next Round Button");
     $(".dynamic_content").append("<a class='btn btn-default next_round disabled' href='#'>Next Round</a>");
@@ -181,7 +181,7 @@ channel.bind('announce_new_player', function(players) {
   for(var i = 0; i < players.length; i++) {
     if (currentPlayers.indexOf(players[i]) < 0) {
       currentPlayers.push(players[i]);
-      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'>0</div><p class='player'>"+"Player_"+players[i].substring(0, 4)+"</p></div>");
+      $(".sidebar").append("<div id='consolebox-"+players[i]+"' class='consolebox'><div class='scorebox'>0</div><p class='player'>"+"Guest_"+players[i].substring(0, 4)+"</p></div>");
     }
   }
 });
