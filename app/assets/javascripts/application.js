@@ -17,7 +17,7 @@
 //= require websocket_rails/main
 
 var scoreNeededToWin = 4;
-var dispatcher = new WebSocketRails('localhost:3000/websocket');
+var dispatcher = new WebSocketRails(sheltered-reef-4582.herokuapp.com);
 var channel = dispatcher.subscribe('updates'); 
 var roundSubmissions = [];
 var roundPhrase = "";
