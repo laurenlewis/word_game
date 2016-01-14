@@ -162,7 +162,7 @@ channel.bind('compare_vote_counts', function(voteSaves) {
   if (possibleWinner !== null && roundIsTied === false) {
     // Show Congrats to Player_xxxx and Add .winnerbox to their consolebox
     $('#consolebox-'+possibleWinner).addClass("winnerbox");
-    $(".dynamic_content").append("<div class='winner'>Congrats to Guest_"+possibleWinner.substring(0,4)+"! Click refresh to start a new game</div>");
+    $(".dynamic_content").append("<div class='winner'>Congrats to Guest_"+possibleWinner.substring(0,4)+"! <br> Click refresh to start a new game.</div>");
   } else {
     console.log("Display Next Round Button");
     $(".dynamic_content").append("<a class='btn btn-default next_round disabled' href='#'>Next Round</a>");
