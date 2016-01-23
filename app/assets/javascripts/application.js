@@ -16,7 +16,7 @@
 //= require_tree .
 //= require websocket_rails/main
 
-var scoreNeededToWin = 4;
+var scoreNeededToWin = 13;
 var dispatcher = new WebSocketRails('sagely.herokuapp.com/websocket');
 var channel = dispatcher.subscribe('updates'); 
 var roundSubmissions = [];
