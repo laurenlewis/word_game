@@ -1,4 +1,4 @@
-class WebsocketGameController < WebsocketRails::BaseController  
+class WebsocketGameController < WebsocketRails::BaseController
   # Demo Event
   def handle_hello
   	WebsocketRails[:updates].trigger(:update, "hello from the server. i received the message "+message)
@@ -79,19 +79,16 @@ class WebsocketGameController < WebsocketRails::BaseController
 
   private
   def get_random_phrase
-  	phrases = [
-  	  'My sagely old uncle used to say: "She who offers an apple..."', 
-  	  'My sagely old aunt used to say: "He who fears clocks..."', 
-  	  'My sagely old neighbor used to say: "She who hopes for the pumpkins..."',
-      'My sagely old grandma used to say: "He who follows pebbles..."',
-      'My sagely old grandpa used to say: "She who ignores her shadow..."',
-      'My sagely old professor used to say: "He who chases death..."',
-      'My sagely old mailman used to say: "She who abandons ignorance..."',
-      'My sagely old librarian used to say: "He who steps on love..."',
-      'My sagely old cat used to say: "She who squints at the mice..."',
-      'My sagely old uncle used to say: "He who drinks with a snake..."'
-  	]
-  	# phrases[controller_store[:round_number]] 
-    phrases.sample
+  	[
+  	  'My sagely old uncle used to say: ',
+  	  'My sagely old aunt used to say: ',
+  	  'My sagely old neighbor used to say: ',
+      'My sagely old grandma used to say: ',
+      'My sagely old grandpa used to say: ',
+      'My sagely old professor used to say: ',
+      'My sagely old mailman used to say: ',
+      'My sagely old librarian used to say: ',
+      'My sagely old cat used to say: ',
+  	].sample + "#{Sentence.build}"
   end
-end 
+end
